@@ -1,0 +1,29 @@
+
+ <p class="notice text-success"><%= notice %></p>
+  <p class="alert text-danger"><%= alert %></p>
+
+<% content_for :title, "Articles" %>
+
+<h2>Artículos</h2>
+
+<div id="articles">
+  <% @articles.each do |article| %>
+
+  <div class="">
+    <%= render article %>
+  </div>
+
+  <div class="d-flex d-inline my-4">
+  <%= link_to "Comentar y ver comentarios", article, class:"btn btn-secondary btn-sm mb-4" %>
+
+  <% Article::Kinds.each do |kind| %>
+    <%= button_to "#{Article::KindsSpanish[kind]}", new_user_reaction_path(article_id: article.id, reaction_type: "article", kind: kind), method: :post, data: {turbo: false}, anchor: article.id, class:"btn btn-primary btn-sm mx-1" %>
+  <% end %>
+</div>
+
+  <% end %>
+
+
+</div>
+
+

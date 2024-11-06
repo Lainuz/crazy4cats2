@@ -1,0 +1,9 @@
+
+
+<div class="d-flex d-inline my-4">
+  <% Article::Kinds.each do |kind| %>
+    <%= button_to "#{Article::KindsSpanish[kind]}", new_user_reaction_path(article_id: @article.id, reaction_type: "article", kind: kind), method: :post, class:"btn btn-primary btn-sm mx-1" %>
+  <% end %>
+</div>
+
+

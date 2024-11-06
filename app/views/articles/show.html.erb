@@ -1,0 +1,23 @@
+<div class="container">
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+
+
+<%= render @article %>
+
+<%= render 'comments/form' %>
+
+<%= render 'comments/article_comment' %>
+
+<div class="d-flex d-inline my-5">
+<%= link_to "Volver a los Artículos", articles_path, class:"btn btn-success btn-sm me-2" %> 
+ <% if user_signed_in? %>
+    <% if current_user.id == @article.user_id %>
+<%= link_to "Editar Artículo", edit_article_path(@article), class:"btn btn-warning btn-sm mx-2" %> |
+<%= button_to "Borrar artículo", @article, method: :delete, class:"btn btn-danger btn-sm mx-2" %>
+    <% end %>
+<% end %>
+
+
+</div>
+</div>

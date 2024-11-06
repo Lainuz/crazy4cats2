@@ -1,0 +1,23 @@
+<div id="<%= dom_id article %>">
+  <p>
+    <strong>Título:</strong>
+    <%= article.title %> |
+     <strong>Autor:</strong>
+    <%= article.user.name %>
+    <%= image_tag article.user.photo, class:"avatar rounded-circle border border-danger" %>
+  </p>  
+
+  <p>
+    <strong>Descripción:</strong>
+    <%= article.description %>
+  </p>
+
+
+<div class="d-flex d-inline my-4">
+<span>Reacciones del articulo:  </span>
+<% Article::Kinds.each do |kind| %>
+ <button class="badge text-bg-dark mx-2" disabled><%= article.count_with_kind(kind) %> </button>
+<% end %>
+</div>
+
+</div>

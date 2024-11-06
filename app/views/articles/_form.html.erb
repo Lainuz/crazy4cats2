@@ -1,0 +1,35 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-3">
+    <%= form.label :Título, style: "display: block" %>
+    <%= form.text_field :title,  size: 30, class:"border border-primary focus-ring rounded-2" %>
+  </div>
+
+
+  <div class="my-3">
+    <%= form.label :Descripción, style: "display: block" %>
+    <%= form.text_area :description, class:"border border-primary focus-ring rounded-2", cols: 60, rows: 5 %>
+  </div>
+
+  <div>
+    <%# <%= form.label :user_id, style: "display: block" %>
+    <%= form.hidden_field :user_id, value:current_user.id %>
+  </div>
+
+
+  <div class="my-3">
+    <%# <%= form.submit %>
+    <button class="btn btn-outline-success" type="submit">Crear Artículo</button>
+  </div>
+<% end %>

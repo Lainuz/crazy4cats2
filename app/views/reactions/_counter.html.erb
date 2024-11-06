@@ -1,0 +1,7 @@
+
+<div class="d-flex d-inline my-4">
+<span>Reacciones del articulo:  </span>
+<% Article::Kinds.each do |kind| %>
+ <button class="badge text-bg-dark mx-2" disabled><%= @article.count_with_kind(kind) %> </button>
+<% end %>
+</div>
